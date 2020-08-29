@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "Escape",
+			"Path": "C:\\Users\\Luis\\Documents\\Unreal\\Escape\\Escape\\Source\\Escape.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "EscapeEditor",
+			"Path": "C:\\Users\\Luis\\Documents\\Unreal\\Escape\\Escape\\Source\\EscapeEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
