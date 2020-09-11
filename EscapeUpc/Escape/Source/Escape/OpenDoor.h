@@ -28,8 +28,11 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	AActor* ActorOpen; 
+	float DoorLastOpened;
+	float DoorCloseDelay = 2.f;
 
 	void OpenDoor(float DeltaTime);
+	void CloseDoor(float DeltaTime);
 
 protected:
 	// Called when the game starts
