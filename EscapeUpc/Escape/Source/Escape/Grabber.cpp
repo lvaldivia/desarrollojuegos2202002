@@ -4,6 +4,9 @@
 #include "Grabber.h"
 #include "Engine/World.h"
 #include "GameFramework/PlayerController.h"
+#include "DrawDebugHelpers.h"
+
+
 
 // Sets default values for this component's properties
 UGrabber::UGrabber()
@@ -21,8 +24,10 @@ void UGrabber::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
-	
+	PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
+	if(!PhysicsHandle){
+		UE_LOG(LogTemp,Error,TEXT("No Physics Handle Component"));
+	}
 }
 
 
@@ -36,6 +41,32 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 		OUT PlayerViewPointLocation,
 		OUT PlayerViewPointRotation
 	);
+
+	FVector LineTraceEnd = PlayerViewPointLocation + PlayerViewPointLocation.Normalize() * Reach;
+
+	DrawDebugLine(
+		GetWorld(),
+		PlayerViewPointLocation,
+		LineTraceEnd,
+		FColor(0,255,0),
+		false,
+		0.f,
+		0.f,
+		5.0f
+	);
+
+	FHitResult Hit;
+	FCollisionQueryParams TraceParams(FName(TEXT("")),false,GetOwner()); 
+	GetWorld()->LineTraceSingleByObjectType(
+		OUT Hit,
+		PlayerViewPointLocation,
+		LineTraceEnd,
+		FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody),
+		TraceParams
+	);
+	AActor* ActorHit = Hit.GetActor();
+
+
 
 	UE_LOG(LogTemp,Error,TEXT("Location: %s, Rotation:%s"),
 					*PlayerViewPointLocation.ToString(),*PlayerViewPointRotation.ToString());
