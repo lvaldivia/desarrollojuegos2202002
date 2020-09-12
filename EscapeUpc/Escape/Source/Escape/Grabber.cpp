@@ -23,11 +23,15 @@ UGrabber::UGrabber()
 void UGrabber::BeginPlay()
 {
 	Super::BeginPlay();
-
-	PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
-	if(!PhysicsHandle){
-		UE_LOG(LogTemp,Error,TEXT("No Physics Handle Component"));
+	InputComponent = GetOwner()->FindComponentByClass<UInputComponent>();
+	if(InputComponent){
+		//UE_LOG(LogTemp,Error,TEXT("Hay"));
+		InputComponent->BindAction("Grab",IE_Pressed,this,&UGrabber::Grab);
 	}
+}
+
+void UGrabber::Grab(){
+	UE_LOG(LogTemp,Error,TEXT("GRABBERR GAAAAA"));
 }
 
 
@@ -42,7 +46,7 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 		OUT PlayerViewPointRotation
 	);
 
-	FVector LineTraceEnd = PlayerViewPointLocation + PlayerViewPointLocation.Normalize() * Reach;
+	FVector LineTraceEnd = PlayerViewPointLocation + PlayerViewPointRotation.Vector() * Reach;
 
 	DrawDebugLine(
 		GetWorld(),
@@ -65,10 +69,13 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 		TraceParams
 	);
 	AActor* ActorHit = Hit.GetActor();
+	//UE_LOG(LogTemp,Error,TEXT("Line Trace has hit"));
+	if(ActorHit){
+			UE_LOG(LogTemp,Error,TEXT("Line Trace has hit %s,"),
+					*ActorHit->GetName());
+	}else{
+	}
 
 
-
-	UE_LOG(LogTemp,Error,TEXT("Location: %s, Rotation:%s"),
-					*PlayerViewPointLocation.ToString(),*PlayerViewPointRotation.ToString());
 }
 

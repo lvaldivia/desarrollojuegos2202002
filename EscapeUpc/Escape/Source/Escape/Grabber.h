@@ -24,7 +24,8 @@ protected:
 private:
 	float Reach = 100.f;
 	UPhysicsCollisionHandler* PhysicsHandle = nullptr;
-
+	UInputComponent* InputComponent = nullptr;
+	void Grab();
 
 public:	
 	// Called every frame
