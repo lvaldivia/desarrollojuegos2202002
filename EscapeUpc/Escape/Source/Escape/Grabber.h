@@ -26,6 +26,9 @@ private:
 	UPhysicsCollisionHandler* PhysicsHandle = nullptr;
 	UInputComponent* InputComponent = nullptr;
 	void Grab();
+	void SetInputComponent();
+	void CheckCollision();
+	void Release();
 
 public:	
 	// Called every frame

@@ -23,15 +23,24 @@ UGrabber::UGrabber()
 void UGrabber::BeginPlay()
 {
 	Super::BeginPlay();
+	SetInputComponent();
+}
+
+void UGrabber::SetInputComponent(){
 	InputComponent = GetOwner()->FindComponentByClass<UInputComponent>();
 	if(InputComponent){
 		//UE_LOG(LogTemp,Error,TEXT("Hay"));
 		InputComponent->BindAction("Grab",IE_Pressed,this,&UGrabber::Grab);
+		InputComponent->BindAction("Grab",IE_Released,this,&UGrabber::Release);
 	}
 }
 
+void UGrabber::Release(){
+	UE_LOG(LogTemp,Error,TEXT("RELEASE GAAAAA"));
+}
+
 void UGrabber::Grab(){
-	UE_LOG(LogTemp,Error,TEXT("GRABBERR GAAAAA"));
+	UE_LOG(LogTemp,Error,TEXT("GRAB GAAAAA"));
 }
 
 
@@ -39,6 +48,10 @@ void UGrabber::Grab(){
 void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+	CheckCollision(DeltaTime);
+}
+
+void UUGrabber::CheckCollision(float DeltaTime){
 	FVector PlayerViewPointLocation;
 	FRotator PlayerViewPointRotation;
 	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(
@@ -75,7 +88,5 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 					*ActorHit->GetName());
 	}else{
 	}
-
-
 }
 

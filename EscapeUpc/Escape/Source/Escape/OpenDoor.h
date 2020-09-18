@@ -33,6 +33,8 @@ private:
 
 	void OpenDoor(float DeltaTime);
 	void CloseDoor(float DeltaTime);
+	void SetActor();
+	void InitialValues();
 
 protected:
 	// Called when the game starts

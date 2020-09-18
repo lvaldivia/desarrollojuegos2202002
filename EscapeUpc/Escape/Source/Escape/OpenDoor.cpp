@@ -19,9 +19,17 @@ UOpenDoor::UOpenDoor()
 void UOpenDoor::BeginPlay()
 {
 	Super::BeginPlay();
+	InitialValues();
+	SetActor();
+}
+
+void UOpenDoor::InitialValues(){
 	InitialYaw = GetOwner()->GetActorRotation().Yaw;
 	CurrentYaw = InitialYaw;
 	TargetYaw += InitialYaw;
+}
+
+void UOpenDoor::SetActor(){
 	ActorOpen = GetWorld()->GetFirstPlayerController()->GetPawn();
 	if(!ActorOpen){
 		UE_LOG(LogTemp,Error,TEXT("NO HAY PLAYER"));
