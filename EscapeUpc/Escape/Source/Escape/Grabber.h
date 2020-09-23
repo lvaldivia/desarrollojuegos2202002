@@ -17,22 +17,25 @@ public:
 	// Sets default values for this component's properties
 	UGrabber();
 
+	// Called every frame
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
 private:
 	float Reach = 100.f;
-	UPhysicsCollisionHandler* PhysicsHandle = nullptr;
+	UPhysicsHandleComponent* PhysicsHandler = nullptr;
 	UInputComponent* InputComponent = nullptr;
-	void Grab();
+	FVector PlayerViewPointLocation;
+	FRotator PlayerViewPointRotation;
+
 	void SetInputComponent();
-	void CheckCollision();
+	void Grab();
 	void Release();
-
-public:	
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
-		
+	void CheckCollision();
+	void FindPhysicsHandle();
+	FHitResult GetFirstPhysicsBodyInReach();
+	FVector GetLineTraceEnd();
 };

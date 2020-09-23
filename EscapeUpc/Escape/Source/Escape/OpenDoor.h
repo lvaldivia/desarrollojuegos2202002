@@ -18,23 +18,36 @@ public:
 	UOpenDoor();
 
 private:
-	UPROPERTY(EditAnywhere)
-	float TargetYaw = 90.0f;
 	float InitialYaw;
 	float CurrentYaw;
+
+	UPROPERTY(EditAnywhere)
+	float MassToOpenDoors = 50.f;
+	UPROPERTY(EditAnywhere)
+	float OpenAngle = 90.f;
+
+	float DoorLastOpened = 0.f;
+	UPROPERTY(EditAnywhere)
+	float DoorClosedDelay = .5f;
+
+	UPROPERTY(EditAnywhere)
+	float DoorOpenSpeed = .8f;
+
+	UPROPERTY(EditAnywhere)
+	float DoorCloseSpeed = 2.f;
 
 	UPROPERTY(EditAnywhere)
 	ATriggerVolume* Pressure; 
 
 	UPROPERTY(EditAnywhere)
 	AActor* ActorOpen; 
-	float DoorLastOpened;
-	float DoorCloseDelay = 2.f;
+	
 
 	void OpenDoor(float DeltaTime);
 	void CloseDoor(float DeltaTime);
 	void SetActor();
 	void InitialValues();
+	float TotalMassOfActors()const;
 
 protected:
 	// Called when the game starts

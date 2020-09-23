@@ -59,7 +59,11 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UOpenDoor); \
 
 
 #define Escape_Source_Escape_OpenDoor_h_14_PRIVATE_PROPERTY_OFFSET \
-	FORCEINLINE static uint32 __PPO__TargetYaw() { return STRUCT_OFFSET(UOpenDoor, TargetYaw); } \
+	FORCEINLINE static uint32 __PPO__MassToOpenDoors() { return STRUCT_OFFSET(UOpenDoor, MassToOpenDoors); } \
+	FORCEINLINE static uint32 __PPO__OpenAngle() { return STRUCT_OFFSET(UOpenDoor, OpenAngle); } \
+	FORCEINLINE static uint32 __PPO__DoorClosedDelay() { return STRUCT_OFFSET(UOpenDoor, DoorClosedDelay); } \
+	FORCEINLINE static uint32 __PPO__DoorOpenSpeed() { return STRUCT_OFFSET(UOpenDoor, DoorOpenSpeed); } \
+	FORCEINLINE static uint32 __PPO__DoorCloseSpeed() { return STRUCT_OFFSET(UOpenDoor, DoorCloseSpeed); } \
 	FORCEINLINE static uint32 __PPO__Pressure() { return STRUCT_OFFSET(UOpenDoor, Pressure); } \
 	FORCEINLINE static uint32 __PPO__ActorOpen() { return STRUCT_OFFSET(UOpenDoor, ActorOpen); }
 

@@ -20,13 +20,17 @@ void UOpenDoor::BeginPlay()
 {
 	Super::BeginPlay();
 	InitialValues();
-	SetActor();
+	
 }
 
 void UOpenDoor::InitialValues(){
 	InitialYaw = GetOwner()->GetActorRotation().Yaw;
 	CurrentYaw = InitialYaw;
-	TargetYaw += InitialYaw;
+	OpenAngle += InitialYaw;
+	if(!Pressure){
+		UE_LOG(LogTemp,Error,TEXT("%s no plate GAA"),*GetOwner()->GetName());
+	}
+	SetActor();
 }
 
 void UOpenDoor::SetActor(){
@@ -41,16 +45,7 @@ void UOpenDoor::SetActor(){
 void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
-	//UE_LOG(LogTemp,Error,TEXT("%s"),*GetOwner()->GetActorRotation().ToString());
-	//UE_LOG(LogTemp,Error,TEXT("Yaw is %f*"),GetOwner()->GetActorRotation().Yaw);
-
-	//float CurrentYaw = GetOwner()->GetActorRotation().Yaw;
-	//FRotator OpenDoor(0.0f,TargetYaw,0.f);
-	//OpenDoor.Yaw = FMath::Lerp(CurrentYaw,TargetYaw,0.02f);
-	//OpenDoor.Yaw = FMath::FInterpConstantTo(CurrentYaw,TargetYaw,DeltaTime,45);
-	//GetOwner()->SetActorRotation(OpenDoor);
-	if(Pressure && Pressure->IsOverlappingActor(ActorOpen)){
+	/*if(Pressure && Pressure->IsOverlappingActor(ActorOpen)){
 		OpenDoor(DeltaTime);
 		DoorLastOpened = GetWorld()->GetTimeSeconds();
 	}else{
@@ -58,11 +53,20 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 			CloseDoor(DeltaTime);
 		}
 		
+	}*/
+
+	if(TotalMassOfActors()>MassToOpenDoors){
+		OpenDoor(DeltaTime);
+		DoorLastOpened = GetWorld()->GetTimeSeconds();
+	}else{
+		if(GetWorld()->GetTimeSeconds() - DoorLastOpened > DoorClosedDelay){
+			CloseDoor(DeltaTime);
+		}
 	}
 }
 
 void UOpenDoor::OpenDoor(float DeltaTime){
-	CurrentYaw = FMath::Lerp(CurrentYaw,TargetYaw,DeltaTime);
+	CurrentYaw = FMath::Lerp(CurrentYaw,OpenAngle,DeltaTime*DoorOpenSpeed);
 	FRotator DoorRotation = GetOwner()->GetActorRotation();
 	DoorRotation.Yaw = CurrentYaw;
 	GetOwner()->SetActorRotation(DoorRotation);
@@ -70,9 +74,21 @@ void UOpenDoor::OpenDoor(float DeltaTime){
 
 
 void UOpenDoor::CloseDoor(float DeltaTime){
-	CurrentYaw = FMath::Lerp(CurrentYaw,InitialYaw,DeltaTime);
+	CurrentYaw = FMath::Lerp(CurrentYaw,InitialYaw,DeltaTime*DoorCloseSpeed);
 	FRotator DoorRotation = GetOwner()->GetActorRotation();
 	DoorRotation.Yaw = CurrentYaw;
 	GetOwner()->SetActorRotation(DoorRotation);
+}
+
+float UOpenDoor::TotalMassOfActors() const{
+	float TotalMass = 0.f;
+	TArray<AActor*> OverlappingActor;
+	Pressure->GetOverlappingActors(OUT OverlappingActor);
+	for(AActor* Actor: OverlappingActor){
+		TotalMass += Actor->FindComponentByClass<UPrimitiveComponent>()->GetMass();
+		UE_LOG(LogTemp,Error,TEXT("%s is on pressure :'v"),*Actor->GetName());
+	}
+	return TotalMass;
+
 }
 
