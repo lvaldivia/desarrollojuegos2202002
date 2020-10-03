@@ -1,0 +1,9 @@
+{
+	"files.exclude": {
+		"C:/Users/Luis/Downloads/ToonTanksProjectSetup_4.25/ToonTanksProjectSetup_4.25/ToonTanks/.vscode": true,
+		"C:/Users/Luis/Downloads/ToonTanksProjectSetup_4.25/ToonTanksProjectSetup_4.25/ToonTanks/Content": true,
+		"C:/Users/Luis/Downloads/ToonTanksProjectSetup_4.25/ToonTanksProjectSetup_4.25/ToonTanks/DerivedDataCache": true,
+		"C:/Users/Luis/Downloads/ToonTanksProjectSetup_4.25/ToonTanksProjectSetup_4.25/ToonTanks/Intermediate": true,
+		"C:/Users/Luis/Downloads/ToonTanksProjectSetup_4.25/ToonTanksProjectSetup_4.25/ToonTanks/Saved": true
+	}
+}
