@@ -26,6 +26,8 @@ private:
 	float MoveSpeed = 100.0f;
 	float RotateSpeed = 100.0f;
 
+	APlayerController* PlayerController;
+
 	void CalculateMoveInput(float Value);
 	void CalculateRotateInput(float Value);
 	void Move();
@@ -34,6 +36,7 @@ private:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	virtual void HandleDestruction() override;
 public:
 	ATank();
 		

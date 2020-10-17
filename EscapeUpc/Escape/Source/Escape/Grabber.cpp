@@ -48,6 +48,7 @@ void UGrabber::Grab()
 	{
 		UE_LOG(LogTemp, Error, TEXT("No hit"));
 	}
+	
 }
 
 void UGrabber::Release()
@@ -108,8 +109,11 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	CheckCollision();
-	if (PhysicsHandler->GrabbedComponent)
-	{
-		PhysicsHandler->SetTargetLocation(GetLineTraceEnd());
+	if(PhysicsHandler){
+		if (PhysicsHandler->GrabbedComponent)
+		{
+			PhysicsHandler->SetTargetLocation(GetLineTraceEnd());
+		}
 	}
+	
 }

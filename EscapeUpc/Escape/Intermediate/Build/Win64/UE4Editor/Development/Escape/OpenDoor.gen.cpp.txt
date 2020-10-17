@@ -4,4 +4,6 @@ C:\Program Files\Epic Games\UE_4.25\Engine\Source\Runtime\CoreUObject\Public\UOb
 C:\Users\Luis\Documents\Unreal\EscapeUpc\Escape\Source\Escape/OpenDoor.h
 C:\Program Files\Epic Games\UE_4.25\Engine\Source\Runtime\Engine\Classes\Engine/TriggerVolume.h
 C:\Program Files\Epic Games\UE_4.25\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\TriggerVolume.generated.h
+C:\Program Files\Epic Games\UE_4.25\Engine\Source\Runtime\Engine\Classes\Components/AudioComponent.h
+C:\Program Files\Epic Games\UE_4.25\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\AudioComponent.generated.h
 C:\Users\Luis\Documents\Unreal\EscapeUpc\Escape\Intermediate\Build\Win64\UE4Editor\Inc\Escape\OpenDoor.generated.h

@@ -7,14 +7,25 @@
 
 void ATurret::BeginPlay(){
     Super::BeginPlay();
-    GetWorld()->GetTimerManager().SetTimer(FireRateTimeHandle,this,&ATurret::CheckFireCondition,
+    GetWorld()->GetTimerManager().SetTimer(FireRateTimeHandle,this,
+                    &ATurret::CheckFireCondition,
                     FireRate,true);
     Player = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this,0));
 }
 
 void ATurret::Tick(float DeltaTime){
     Super::Tick(DeltaTime);
+    if(!Player || ReturnDistanceToPlayer() >  FireRange){
+        return;
+    }
+    RotateTurret(Player->GetActorLocation());
 }
+
+
+ void ATurret::HandleDestruction() {
+     Super::HandleDestruction();
+     Destroy();
+ }
 
 
 void ATurret::CheckFireCondition(){

@@ -34,6 +34,7 @@ void ATank::Rotate(){
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
+    PlayerController = Cast<APlayerController>(GetController());
 }
 
 // Called every frame
@@ -42,6 +43,12 @@ void ATank::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
     Rotate();
     Move();
+    if(PlayerController){
+        FHitResult TraceHitResult;
+        PlayerController->GetHitResultUnderCursor(ECC_Visibility,false,TraceHitResult);
+        FVector FHitLocation = TraceHitResult.ImpactPoint;
+        RotateTurret(FHitLocation);
+    }
 }
 
 // Called to bind functionality to input
