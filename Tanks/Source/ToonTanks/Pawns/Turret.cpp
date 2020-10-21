@@ -7,10 +7,14 @@
 
 void ATurret::BeginPlay(){
     Super::BeginPlay();
+    SetTimer();
+    Player = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this,0));
+}
+
+void ATurret::SetTimer(){
     GetWorld()->GetTimerManager().SetTimer(FireRateTimeHandle,this,
                     &ATurret::CheckFireCondition,
                     FireRate,true);
-    Player = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this,0));
 }
 
 void ATurret::Tick(float DeltaTime){

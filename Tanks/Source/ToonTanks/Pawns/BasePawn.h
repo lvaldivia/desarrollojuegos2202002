@@ -27,6 +27,7 @@ private:
 	USceneComponent* ProjectileSpawnPoint;
 
 protected:
+	virtual void SetupComponents();
 	virtual void RotateTurret(FVector LookAtTarget);
 	void Fire();
 	virtual void HandleDestruction();

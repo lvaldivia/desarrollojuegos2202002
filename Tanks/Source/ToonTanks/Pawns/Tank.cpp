@@ -8,10 +8,7 @@
 
 ATank::ATank()
 {
-	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("Arm Component"));
-	SpringArm->SetupAttachment(RootComponent);
-	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera Component"));
-	Camera->SetupAttachment(SpringArm);
+	//Super::ABasePawn();
 }
 
 
@@ -37,18 +34,31 @@ void ATank::BeginPlay()
     PlayerController = Cast<APlayerController>(GetController());
 }
 
+
+void ATank::SetupComponents() {
+    Super::SetupComponents();
+    SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("Arm Component"));
+	SpringArm->SetupAttachment(RootComponent);
+	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera Component"));
+	Camera->SetupAttachment(SpringArm);
+}
 // Called every frame
 void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
     Rotate();
     Move();
+    CalculateHitResult();
+}
+
+void ATank::CalculateHitResult(){
     if(PlayerController){
         FHitResult TraceHitResult;
         PlayerController->GetHitResultUnderCursor(ECC_Visibility,false,TraceHitResult);
         FVector FHitLocation = TraceHitResult.ImpactPoint;
         RotateTurret(FHitLocation);
     }
+
 }
 
 // Called to bind functionality to input
