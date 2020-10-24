@@ -3,6 +3,7 @@
 
 #include "PawnBase.h"
 #include "Components/CapsuleComponent.h"
+#include "ProjectileBase.h"
 
 
 
@@ -24,13 +25,26 @@ APawnBase::APawnBase()
 	ProjectileSpawnPoint->SetupAttachment(TurretMesh);
 }
 
-void APawnBase::RotateTurretFunction(FVector LookAtTarget) 
+void APawnBase::RotateTurret(FVector LookAtTarget) 
 {
+	FVector LookAtTargetCleaned = FVector(LookAtTarget.X, LookAtTarget.Y, TurretMesh->GetComponentLocation().Z);
+	FVector StartLocation = TurretMesh->GetComponentLocation();
+	
+	FRotator TurretRotation = FVector(LookAtTargetCleaned - StartLocation).Rotation();
+	TurretMesh->SetWorldRotation(TurretRotation);
 
 }
 
 void APawnBase::Fire() 
 {
+	UE_LOG(LogTemp, Error, TEXT("Fire Condition Checked"));
+	if(ProjectileClass){
+		FVector SpawnLocation = ProjectileSpawnPoint->GetComponentLocation();
+		FRotator SpawnRotation = ProjectileSpawnPoint->GetComponentRotation();
+		AProjectileBase* TempProjectile = GetWorld()->SpawnActor<AProjectileBase>(
+			ProjectileClass,SpawnLocation,SpawnRotation);
+		TempProjectile->SetOwner(this);
+	}
 
 }
 

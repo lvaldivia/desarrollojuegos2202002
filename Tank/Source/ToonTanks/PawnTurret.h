@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -8,13 +6,11 @@
 
 class APawnTank;
 
-/**
- * 
- */
 UCLASS()
 class TOONTANKS_API APawnTurret : public APawnBase
 {
 	GENERATED_BODY()
+
 private: 
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat", meta = (AllowPrivateAccess = "true"))
@@ -36,6 +32,7 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	virtual void HandleDestruction() override; 
+	
 };
-
-

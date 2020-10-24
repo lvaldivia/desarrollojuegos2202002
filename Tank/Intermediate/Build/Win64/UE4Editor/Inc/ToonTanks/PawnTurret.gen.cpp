@@ -49,7 +49,6 @@ void EmptyLinkFunctionForGeneratedCodePawnTurret() {}
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APawnTurret_Statics::Class_MetaDataParams[] = {
-		{ "Comment", "/**\n * \n */" },
 		{ "HideCategories", "Navigation" },
 		{ "IncludePath", "PawnTurret.h" },
 		{ "ModuleRelativePath", "PawnTurret.h" },
@@ -102,7 +101,7 @@ void EmptyLinkFunctionForGeneratedCodePawnTurret() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APawnTurret, 1425623417);
+	IMPLEMENT_CLASS(APawnTurret, 4121480386);
 	template<> TOONTANKS_API UClass* StaticClass<APawnTurret>()
 	{
 		return APawnTurret::StaticClass();
