@@ -8,15 +8,27 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class UPrimitiveComponent;
+class AActor;
+struct FVector;
+struct FHitResult;
 #ifdef TOONTANKS_ProjectileBase_generated_h
 #error "ProjectileBase.generated.h already included, missing '#pragma once' in ProjectileBase.h"
 #endif
 #define TOONTANKS_ProjectileBase_generated_h
 
-#define ToonTanks_Source_ToonTanks_ProjectileBase_h_14_SPARSE_DATA
-#define ToonTanks_Source_ToonTanks_ProjectileBase_h_14_RPC_WRAPPERS
-#define ToonTanks_Source_ToonTanks_ProjectileBase_h_14_RPC_WRAPPERS_NO_PURE_DECLS
-#define ToonTanks_Source_ToonTanks_ProjectileBase_h_14_INCLASS_NO_PURE_DECLS \
+#define ToonTanks_Source_ToonTanks_ProjectileBase_h_11_SPARSE_DATA
+#define ToonTanks_Source_ToonTanks_ProjectileBase_h_11_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execOnHit);
+
+
+#define ToonTanks_Source_ToonTanks_ProjectileBase_h_11_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execOnHit);
+
+
+#define ToonTanks_Source_ToonTanks_ProjectileBase_h_11_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAProjectileBase(); \
 	friend struct Z_Construct_UClass_AProjectileBase_Statics; \
@@ -25,7 +37,7 @@ public: \
 	DECLARE_SERIALIZER(AProjectileBase)
 
 
-#define ToonTanks_Source_ToonTanks_ProjectileBase_h_14_INCLASS \
+#define ToonTanks_Source_ToonTanks_ProjectileBase_h_11_INCLASS \
 private: \
 	static void StaticRegisterNativesAProjectileBase(); \
 	friend struct Z_Construct_UClass_AProjectileBase_Statics; \
@@ -34,7 +46,7 @@ public: \
 	DECLARE_SERIALIZER(AProjectileBase)
 
 
-#define ToonTanks_Source_ToonTanks_ProjectileBase_h_14_STANDARD_CONSTRUCTORS \
+#define ToonTanks_Source_ToonTanks_ProjectileBase_h_11_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AProjectileBase(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AProjectileBase) \
@@ -47,7 +59,7 @@ private: \
 public:
 
 
-#define ToonTanks_Source_ToonTanks_ProjectileBase_h_14_ENHANCED_CONSTRUCTORS \
+#define ToonTanks_Source_ToonTanks_ProjectileBase_h_11_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AProjectileBase(AProjectileBase&&); \
@@ -58,7 +70,7 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AProjectileBase); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AProjectileBase)
 
 
-#define ToonTanks_Source_ToonTanks_ProjectileBase_h_14_PRIVATE_PROPERTY_OFFSET \
+#define ToonTanks_Source_ToonTanks_ProjectileBase_h_11_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__ProjectileMovement() { return STRUCT_OFFSET(AProjectileBase, ProjectileMovement); } \
 	FORCEINLINE static uint32 __PPO__ProjectileMesh() { return STRUCT_OFFSET(AProjectileBase, ProjectileMesh); } \
 	FORCEINLINE static uint32 __PPO__DamageType() { return STRUCT_OFFSET(AProjectileBase, DamageType); } \
@@ -66,27 +78,27 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AProjectileBase); \
 	FORCEINLINE static uint32 __PPO__Damage() { return STRUCT_OFFSET(AProjectileBase, Damage); }
 
 
-#define ToonTanks_Source_ToonTanks_ProjectileBase_h_11_PROLOG
-#define ToonTanks_Source_ToonTanks_ProjectileBase_h_14_GENERATED_BODY_LEGACY \
+#define ToonTanks_Source_ToonTanks_ProjectileBase_h_8_PROLOG
+#define ToonTanks_Source_ToonTanks_ProjectileBase_h_11_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	ToonTanks_Source_ToonTanks_ProjectileBase_h_14_PRIVATE_PROPERTY_OFFSET \
-	ToonTanks_Source_ToonTanks_ProjectileBase_h_14_SPARSE_DATA \
-	ToonTanks_Source_ToonTanks_ProjectileBase_h_14_RPC_WRAPPERS \
-	ToonTanks_Source_ToonTanks_ProjectileBase_h_14_INCLASS \
-	ToonTanks_Source_ToonTanks_ProjectileBase_h_14_STANDARD_CONSTRUCTORS \
+	ToonTanks_Source_ToonTanks_ProjectileBase_h_11_PRIVATE_PROPERTY_OFFSET \
+	ToonTanks_Source_ToonTanks_ProjectileBase_h_11_SPARSE_DATA \
+	ToonTanks_Source_ToonTanks_ProjectileBase_h_11_RPC_WRAPPERS \
+	ToonTanks_Source_ToonTanks_ProjectileBase_h_11_INCLASS \
+	ToonTanks_Source_ToonTanks_ProjectileBase_h_11_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define ToonTanks_Source_ToonTanks_ProjectileBase_h_14_GENERATED_BODY \
+#define ToonTanks_Source_ToonTanks_ProjectileBase_h_11_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	ToonTanks_Source_ToonTanks_ProjectileBase_h_14_PRIVATE_PROPERTY_OFFSET \
-	ToonTanks_Source_ToonTanks_ProjectileBase_h_14_SPARSE_DATA \
-	ToonTanks_Source_ToonTanks_ProjectileBase_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
-	ToonTanks_Source_ToonTanks_ProjectileBase_h_14_INCLASS_NO_PURE_DECLS \
-	ToonTanks_Source_ToonTanks_ProjectileBase_h_14_ENHANCED_CONSTRUCTORS \
+	ToonTanks_Source_ToonTanks_ProjectileBase_h_11_PRIVATE_PROPERTY_OFFSET \
+	ToonTanks_Source_ToonTanks_ProjectileBase_h_11_SPARSE_DATA \
+	ToonTanks_Source_ToonTanks_ProjectileBase_h_11_RPC_WRAPPERS_NO_PURE_DECLS \
+	ToonTanks_Source_ToonTanks_ProjectileBase_h_11_INCLASS_NO_PURE_DECLS \
+	ToonTanks_Source_ToonTanks_ProjectileBase_h_11_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

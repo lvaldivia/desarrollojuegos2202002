@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -27,9 +25,6 @@ private:
 	// VARIABLES
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Projectile Type", meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<AProjectileBase> ProjectileClass;
-
-	UPROPERTY(EditDefaultsOnly,Category="Damage")
-	TSubclassOf<UDamageType> DamageType;
 
 public:
 	// Sets default values for this pawn's properties

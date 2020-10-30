@@ -3,10 +3,9 @@
 
 #include "PawnBase.h"
 #include "Components/CapsuleComponent.h"
-#include "ProjectileBase.h"
+#include "ToonTanks/ProjectileBase.h"
 
-
-
+// Sets default values
 APawnBase::APawnBase()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
@@ -32,23 +31,25 @@ void APawnBase::RotateTurret(FVector LookAtTarget)
 	
 	FRotator TurretRotation = FVector(LookAtTargetCleaned - StartLocation).Rotation();
 	TurretMesh->SetWorldRotation(TurretRotation);
-
 }
 
 void APawnBase::Fire() 
 {
-	UE_LOG(LogTemp, Error, TEXT("Fire Condition Checked"));
-	if(ProjectileClass){
+	UE_LOG(LogTemp, Error, TEXT("Disparar"));
+
+	if(ProjectileClass)
+	{
+		UE_LOG(LogTemp, Error, TEXT("BALAAA"));
 		FVector SpawnLocation = ProjectileSpawnPoint->GetComponentLocation();
 		FRotator SpawnRotation = ProjectileSpawnPoint->GetComponentRotation();
-		AProjectileBase* TempProjectile = GetWorld()->SpawnActor<AProjectileBase>(
-			ProjectileClass,SpawnLocation,SpawnRotation);
+
+		AProjectileBase* TempProjectile = GetWorld()->SpawnActor<AProjectileBase>(ProjectileClass, SpawnLocation, SpawnRotation);
 		TempProjectile->SetOwner(this);
 	}
-
 }
 
 void APawnBase::HandleDestruction() 
 {
-
 }
+
+

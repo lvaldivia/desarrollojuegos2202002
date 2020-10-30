@@ -74,13 +74,13 @@ void EmptyLinkFunctionForGeneratedCodePawnBase() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APawnBase_Statics::NewProp_ProjectileClass_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
-		{ "Category", "Components" },
-		{ "Comment", "//Variables\n" },
+		{ "Category", "Projectile Type" },
+		{ "Comment", "// VARIABLES\n" },
 		{ "ModuleRelativePath", "PawnBase.h" },
-		{ "ToolTip", "Variables" },
+		{ "ToolTip", "VARIABLES" },
 	};
 #endif
-	const UE4CodeGen_Private::FClassPropertyParams Z_Construct_UClass_APawnBase_Statics::NewProp_ProjectileClass = { "ProjectileClass", nullptr, (EPropertyFlags)0x0044000000020015, UE4CodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APawnBase, ProjectileClass), Z_Construct_UClass_AProjectileBase_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_APawnBase_Statics::NewProp_ProjectileClass_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APawnBase_Statics::NewProp_ProjectileClass_MetaData)) };
+	const UE4CodeGen_Private::FClassPropertyParams Z_Construct_UClass_APawnBase_Statics::NewProp_ProjectileClass = { "ProjectileClass", nullptr, (EPropertyFlags)0x0044000000000015, UE4CodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APawnBase, ProjectileClass), Z_Construct_UClass_AProjectileBase_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_APawnBase_Statics::NewProp_ProjectileClass_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APawnBase_Statics::NewProp_ProjectileClass_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APawnBase_Statics::NewProp_ProjectileSpawnPoint_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
@@ -112,10 +112,10 @@ void EmptyLinkFunctionForGeneratedCodePawnBase() {}
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APawnBase_Statics::NewProp_CapsuleComp_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Components" },
-		{ "Comment", "//Componentes\n" },
+		{ "Comment", "// COMPONENTS\n" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "PawnBase.h" },
-		{ "ToolTip", "Componentes" },
+		{ "ToolTip", "COMPONENTS" },
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APawnBase_Statics::NewProp_CapsuleComp = { "CapsuleComp", nullptr, (EPropertyFlags)0x00400000000a001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APawnBase, CapsuleComp), Z_Construct_UClass_UCapsuleComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APawnBase_Statics::NewProp_CapsuleComp_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APawnBase_Statics::NewProp_CapsuleComp_MetaData)) };
@@ -153,7 +153,7 @@ void EmptyLinkFunctionForGeneratedCodePawnBase() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APawnBase, 1898789823);
+	IMPLEMENT_CLASS(APawnBase, 1520737473);
 	template<> TOONTANKS_API UClass* StaticClass<APawnBase>()
 	{
 		return APawnBase::StaticClass();
